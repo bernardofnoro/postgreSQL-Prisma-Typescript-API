@@ -21,15 +21,15 @@ model filmes {
 
 }
 
-model participante {
-  id    Int @default(autoincrement()) @id
-  nome  String
-  imagem String
-  data_nascimento String
-  staff String
-}
+// model participante {
+//   id    Int @default(autoincrement()) @id
+//   nome  String
+//   imagem String
+//   data_nascimento String
+//   staff String
+// }
 
-model genero {
-  id    Int @default(autoincrement()) @id
-  nome  String
-}
+// model genero {
+//   id    Int @default(autoincrement()) @id
+//   nome  String
+// }
