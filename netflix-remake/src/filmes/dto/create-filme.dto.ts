@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateFilmeDto {
   @IsNotEmpty()
@@ -17,9 +17,9 @@ export class CreateFilmeDto {
   @IsString()
   data_lancamento: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  tempo_duracao: number;
+  tempo_duracao: string;
 
   @IsNotEmpty()
   @IsString()
@@ -27,5 +27,5 @@ export class CreateFilmeDto {
 
   @IsNotEmpty()
   @IsString()
-  partipantes: string;
+  partipante: string;
 }

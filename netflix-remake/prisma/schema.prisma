@@ -9,3 +9,27 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model filmes {
+  id               Int       @default(autoincrement()) @id
+  nome             String
+  imagem           String?
+  data_lancamento  String
+  tempo_duracao    String
+  genero           String
+  participante     String
+
+}
+
+model participante {
+  id    Int @default(autoincrement()) @id
+  nome  String
+  imagem String
+  data_nascimento String
+  staff String
+}
+
+model genero {
+  id    Int @default(autoincrement()) @id
+  nome  String
+}
