@@ -16,8 +16,10 @@ model Filme {
   imagem           String?
   data_lancamento  String
   tempo_duracao    String
-  genero           String
-  participante     String
+  genero           Genero @relation(fields:[generoid], references:[id])
+  generoid          Int
+  participante     Participante @relation(fields:[participanteid], references:[id])
+  participanteid    Int
 
 }
 
@@ -27,9 +29,11 @@ model Participante {
   imagem String
   data_nascimento String
   staff String
+  filmes  Filme[]
 }
 
 model Genero {
   id    Int @default(autoincrement()) @id
   nome  String
+  filmes Filme[]
 }
