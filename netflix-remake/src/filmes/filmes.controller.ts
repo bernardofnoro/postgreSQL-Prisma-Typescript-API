@@ -22,21 +22,21 @@ export class FilmesController {
 
   @Get()
   findAll() {
-    return this.filmesService.findAll();
+    return this.filmesService.findAllPrisma();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.filmesService.findOne(+id);
+    return this.filmesService.findOnePrisma(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateFilmeDto: UpdateFilmeDto) {
-    return this.filmesService.update(+id, updateFilmeDto);
+    return this.filmesService.updatePrisma(+id, updateFilmeDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.filmesService.remove(+id);
+    return this.filmesService.removePrisma(+id);
   }
 }

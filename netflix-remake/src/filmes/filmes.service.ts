@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
-import { filmes } from '@prisma/client';
+import { Filme } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { data } from 'cheerio/lib/api/attributes';
 
 const lista = [];
 
@@ -11,31 +12,38 @@ export class FilmesService {
   // eslint-disable-next-line prettier/prettier
   constructor(private prisma: PrismaService) {}
 
-  create(createFilmeDto: CreateFilmeDto) {
-    lista.push(createFilmeDto);
-    return `Add com sucesso filme: ${createFilmeDto.nome}`;
-  }
-
-  async createPrisma(createFilmeDto: CreateFilmeDto): Promise<filmes> {
-    return await this.prisma.filmes.create({
-      data: { ...createFilmeDto },
+  async createPrisma(createFilmeDto: CreateFilmeDto): Promise<Filme> {
+    return await this.prisma.filme.create({
+      data: {
+        genero: createFilmeDto.genero,
+        data_lancamento: createFilmeDto.data_lancamento,
+        nome: createFilmeDto.nome,
+        participante: createFilmeDto.partipante,
+        tempo_duracao: createFilmeDto.tempo_duracao,
+        imagem: createFilmeDto.imagem,
+      },
     });
   }
 
-  findAll() {
-    return lista;
+  async findAllPrisma(): Promise<Filme[]> {
+    return await this.prisma.filme.findMany();
   }
 
-  findOne(id: number) {
-    return lista[id];
+  async findOnePrisma(id: number): Promise<Filme> {
+    return await this.prisma.filme.findUnique({ where: { id } });
   }
 
-  update(id: number, updateFilmeDto: UpdateFilmeDto) {
-    return `This action updates a #${id} filme`;
+  async updatePrisma(
+    id: number,
+    UpdateFilmeDto: UpdateFilmeDto,
+  ): Promise<Filme> {
+    return await this.prisma.filme.update({
+      data: { ...UpdateFilmeDto },
+      where: { id },
+    });
   }
 
-  remove(id: number) {
-    delete lista[id];
-    return `deletado com sucesso id: ${id}`;
+  async removePrisma(id: number) {
+    return await this.prisma.filme.delete({ where: { id } });
   }
 }

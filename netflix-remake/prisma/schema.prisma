@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model filmes {
+model Filme {
   id               Int       @default(autoincrement()) @id
   nome             String
   imagem           String?
@@ -21,15 +21,15 @@ model filmes {
 
 }
 
-// model participante {
-//   id    Int @default(autoincrement()) @id
-//   nome  String
-//   imagem String
-//   data_nascimento String
-//   staff String
-// }
+model Participante {
+  id    Int @default(autoincrement()) @id
+  nome  String
+  imagem String
+  data_nascimento String
+  staff String
+}
 
-// model genero {
-//   id    Int @default(autoincrement()) @id
-//   nome  String
-// }
+model Genero {
+  id    Int @default(autoincrement()) @id
+  nome  String
+}
