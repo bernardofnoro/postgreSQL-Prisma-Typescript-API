@@ -1,9 +1,7 @@
 import { Filme } from '.prisma/client';
-import { IsInt, IsNotEmpty, IsString, IsDate } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateParticipanteDto {
-  @IsInt()
-  @IsNotEmpty()
   id: number;
 
   @IsNotEmpty()
@@ -15,10 +13,12 @@ export class CreateParticipanteDto {
   imagem: string;
 
   @IsNotEmpty()
-  @IsDate()
-  data_nascimento: Date;
+  @IsString()
+  data_nascimento: string;
 
   @IsString()
   @IsNotEmpty()
   staff: string;
+
+  filmeid: number;
 }
