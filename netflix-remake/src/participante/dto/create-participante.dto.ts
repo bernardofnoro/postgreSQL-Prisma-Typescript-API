@@ -1,3 +1,4 @@
+import { Filme } from '.prisma/client';
 import { IsInt, IsNotEmpty, IsString, IsDate } from 'class-validator';
 
 export class CreateParticipanteDto {

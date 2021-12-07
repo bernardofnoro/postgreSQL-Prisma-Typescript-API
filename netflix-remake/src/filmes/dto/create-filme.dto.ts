@@ -21,9 +21,9 @@ export class CreateFilmeDto {
 
   @IsNotEmpty()
   @IsString()
-  genero: string;
+  generoid: number;
 
   @IsNotEmpty()
   @IsString()
-  partipante: string;
+  participanteid: number;
 }

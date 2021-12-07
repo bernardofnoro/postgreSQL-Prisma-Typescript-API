@@ -3,9 +3,6 @@ import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
 import { Filme } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { data } from 'cheerio/lib/api/attributes';
-
-const lista = [];
 
 @Injectable()
 export class FilmesService {
@@ -14,14 +11,8 @@ export class FilmesService {
 
   async createPrisma(createFilmeDto: CreateFilmeDto): Promise<Filme> {
     return await this.prisma.filme.create({
-      data: {
-        genero: createFilmeDto.genero,
-        data_lancamento: createFilmeDto.data_lancamento,
-        nome: createFilmeDto.nome,
-        participante: createFilmeDto.partipante,
-        tempo_duracao: createFilmeDto.tempo_duracao,
-        imagem: createFilmeDto.imagem,
-      },
+      // eslint-disable-next-line prettier/prettier
+      data: {...createFilmeDto},
     });
   }
 

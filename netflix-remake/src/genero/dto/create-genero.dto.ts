@@ -1,3 +1,4 @@
+import { Filme } from '.prisma/client';
 import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateGeneroDto {
@@ -8,4 +9,7 @@ export class CreateGeneroDto {
   @IsNotEmpty()
   @IsString()
   nome: string;
+
+  @IsNotEmpty()
+  filme: Filme[];
 }
