@@ -27,8 +27,8 @@ model Participante {
   imagem String
   data_nascimento String
   staff String
-  filme Filme @relation(fields: [filmeid], references:[id])
-  filmeid   Int
+  filme Filme? @relation(fields: [filmeid], references:[id])  // ? quer dizer que posso cadastrar um participante sem atrelar ele a nenhum filme!
+  filmeid   Int? // relação de filme com participante  nao é OBRIGATORIA nesse caso
 }
 
 model Genero {

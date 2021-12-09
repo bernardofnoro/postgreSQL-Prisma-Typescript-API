@@ -20,10 +20,8 @@ export class CreateFilmeDto {
   tempo_duracao: string;
 
   @IsNotEmpty()
-  @IsString()
   generoid: number;
 
   @IsNotEmpty()
-  @IsString()
   participanteid: number;
 }
